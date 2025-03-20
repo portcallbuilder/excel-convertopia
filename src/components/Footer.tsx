@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Logo from '../assets/logo';
 import { Github, Twitter, Mail } from 'lucide-react';
@@ -71,7 +70,7 @@ const Footer: React.FC = () => {
         
         <div className="border-t pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} ExcelConvertopia. All rights reserved.
+            &copy; {new Date().getFullYear()} RISE Research Institutes of Sweden. All rights reserved.
           </p>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
