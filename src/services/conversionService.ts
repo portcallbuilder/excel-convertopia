@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { toast } from 'sonner';
 
 export interface ConversionResult {
@@ -10,48 +11,57 @@ export interface ConversionResult {
   error?: string;
 }
 
+// Define a type for the format object
+export interface FormatInfo {
+  id: string;
+  name: string;
+  extension: string;
+  icon: string; // Changed from JSX to string
+  description: string;
+}
+
 // Supported conversion formats
-export const supportedFormats = [
+export const supportedFormats: FormatInfo[] = [
   {
     id: 'csv',
     name: 'CSV',
     extension: '.csv',
-    icon: <span className="text-xs font-bold">CSV</span>,
+    icon: 'CSV',
     description: 'Comma-Separated Values, ideal for data interchange'
   },
   {
     id: 'pdf',
     name: 'PDF',
     extension: '.pdf',
-    icon: <span className="text-xs font-bold">PDF</span>,
+    icon: 'PDF',
     description: 'Portable Document Format, maintains formatting & layout'
   },
   {
     id: 'json',
     name: 'JSON',
     extension: '.json',
-    icon: <span className="text-xs font-bold">JSON</span>,
+    icon: 'JSON',
     description: 'JavaScript Object Notation, for API integration'
   },
   {
     id: 'xml',
     name: 'XML',
     extension: '.xml',
-    icon: <span className="text-xs font-bold">XML</span>,
+    icon: 'XML',
     description: 'Extensible Markup Language, structured data format'
   },
   {
     id: 'html',
     name: 'HTML',
     extension: '.html',
-    icon: <span className="text-xs font-bold">HTML</span>,
+    icon: 'HTML',
     description: 'Web page format, viewable in any browser'
   },
   {
     id: 'txt',
     name: 'Text',
     extension: '.txt',
-    icon: <span className="text-xs font-bold">TXT</span>,
+    icon: 'TXT',
     description: 'Plain text format, universally compatible'
   }
 ];

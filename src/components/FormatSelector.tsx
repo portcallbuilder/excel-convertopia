@@ -1,20 +1,13 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { CheckIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
-
-export interface Format {
-  id: string;
-  name: string;
-  extension: string;
-  icon: JSX.Element;
-  description: string;
-}
+import { FormatInfo } from '@/services/conversionService';
 
 interface FormatSelectorProps {
-  formats: Format[];
-  onSelect: (format: Format) => void;
-  selectedFormat: Format | null;
+  formats: FormatInfo[];
+  onSelect: (format: FormatInfo) => void;
+  selectedFormat: FormatInfo | null;
 }
 
 const FormatSelector: React.FC<FormatSelectorProps> = ({
@@ -37,7 +30,7 @@ const FormatSelector: React.FC<FormatSelectorProps> = ({
           >
             <div className="flex items-center">
               <div className="p-2 bg-secondary rounded-lg mr-3">
-                {format.icon}
+                <span className="text-xs font-bold">{format.icon}</span>
               </div>
               <div>
                 <p className="font-medium text-sm">{format.name}</p>
