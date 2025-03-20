@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { toast } from 'sonner';
 
@@ -44,71 +45,104 @@ export const supportedFormats: FormatInfo[] = [
   }
 ];
 
-// This is a mock service that simulates an API call for converting Excel files
+// API endpoint for file conversion
+const API_ENDPOINT = 'https://your-api-endpoint.com/convert';
+
+// Function to connect to your existing API for file conversion
 export const convertExcelFile = async (
   file: File,
   format: string,
   onProgress: (progress: number) => void
 ): Promise<ConversionResult> => {
-  return new Promise((resolve, reject) => {
-    // Validate input
-    if (!file) {
-      reject({ success: false, error: 'No file provided' });
-      return;
-    }
+  // Validate input
+  if (!file) {
+    return { success: false, error: 'No file provided' };
+  }
+  
+  if (!format) {
+    return { success: false, error: 'No format selected' };
+  }
+  
+  // Initialize progress
+  onProgress(10);
+  
+  try {
+    // Create a FormData object to send the file
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('format', format);
     
-    if (!format) {
-      reject({ success: false, error: 'No format selected' });
-      return;
-    }
-    
-    // In a real implementation, we would upload the file to a server and call a conversion API
-    // For now, we'll simulate the process with a delay
-    
-    // Simulate initial upload progress
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.random() * 15;
-      if (progress > 95) {
-        progress = 95; // Hold at 95% until "server" is done
-        clearInterval(interval);
-      }
-      onProgress(Math.min(Math.round(progress), 95));
-    }, 300);
-    
-    // Simulate API call delay
-    setTimeout(() => {
-      clearInterval(interval);
-      onProgress(100);
+    // Use XMLHttpRequest for progress tracking
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
       
-      // In a real app, we'd get back the URL to the converted file
-      // Here we just create a fake URL
-      const targetFormat = supportedFormats.find(f => f.id === format);
-      if (!targetFormat) {
-        reject({ 
-          success: false, 
-          error: 'Invalid format selected' 
-        });
-        return;
-      }
-      
-      const originalFileName = file.name.replace(/\.[^/.]+$/, "");
-      const newFileName = `${originalFileName}${targetFormat.extension}`;
-      
-      // Normally this would be a URL to a converted file on the server
-      // For demo purposes, we'll just create a blob URL from the original file
-      // In a real app, this would be replaced with the actual converted file
-      const fakeURL = URL.createObjectURL(file);
-      
-      resolve({
-        success: true,
-        data: {
-          url: fakeURL,
-          fileName: newFileName
+      // Track upload progress
+      xhr.upload.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const percentComplete = Math.round((event.loaded / event.total) * 50);
+          onProgress(10 + percentComplete); // Start from 10%, go up to 60%
         }
-      });
-    }, 3000); // 3 second delay for "conversion"
-  });
+      };
+      
+      // Handle response
+      xhr.onload = () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          onProgress(80); // Processing on server
+          
+          try {
+            const response = JSON.parse(xhr.responseText);
+            
+            // Simulate processing time on server
+            setTimeout(() => {
+              onProgress(100);
+              
+              const targetFormat = supportedFormats.find(f => f.id === format);
+              if (!targetFormat) {
+                reject({ success: false, error: 'Invalid format selected' });
+                return;
+              }
+              
+              const originalFileName = file.name.replace(/\.[^/.]+$/, "");
+              const newFileName = `${originalFileName}${targetFormat.extension}`;
+              
+              resolve({
+                success: true,
+                data: {
+                  url: response.fileUrl || response.downloadUrl || response.url,
+                  fileName: response.fileName || newFileName
+                }
+              });
+            }, 1000);
+          } catch (error) {
+            onProgress(100);
+            reject({ success: false, error: 'Failed to parse server response' });
+          }
+        } else {
+          onProgress(100);
+          reject({ 
+            success: false, 
+            error: `Server returned error: ${xhr.status} ${xhr.statusText}` 
+          });
+        }
+      };
+      
+      // Handle network errors
+      xhr.onerror = () => {
+        onProgress(100);
+        reject({ success: false, error: 'Network error occurred' });
+      };
+      
+      // Open and send the request
+      xhr.open('POST', API_ENDPOINT, true);
+      xhr.send(formData);
+    });
+  } catch (error) {
+    console.error('Conversion error:', error);
+    return {
+      success: false,
+      error: 'An error occurred during file conversion'
+    };
+  }
 };
 
 // Mock download function - in a real app, this would download the converted file
