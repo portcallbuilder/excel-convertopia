@@ -3,11 +3,11 @@ import React from 'react';
 
 export const Logo: React.FC<{ className?: string }> = ({ className = "h-8 w-auto" }) => {
   return (
-    <svg className={className} viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="2" y="2" width="36" height="36" rx="8" fill="hsl(var(--primary))" />
-      <path d="M14 12H26M14 20H26M14 28H22" stroke="hsl(var(--primary-foreground))" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M48 16.4H52.736V29H56.544V16.4H61.28V13.2H48V16.4ZM69.3388 22.52H76.7388V19.68H69.3388V16.28H77.8188V13.2H65.5308V29H78.0188V25.92H69.3388V22.52ZM97.2216 13.2L93.4136 22.28L89.6056 13.2H85.5976V29H89.4056V21.32L92.0936 27.68H94.7336L97.4216 21.32V29H101.23V13.2H97.2216ZM113.648 29H117.456V13.2H113.648V29ZM125.307 19.68H135.827V16.4H125.307V29H129.115V25.92H135.107V22.52H129.115V19.68ZM149.563 29.24C154.923 29.24 158.443 25.68 158.443 21.08C158.443 16.48 154.923 12.96 149.563 12.96C144.203 12.96 140.683 16.52 140.683 21.08C140.683 25.64 144.203 29.24 149.563 29.24ZM149.563 25.88C146.483 25.88 144.603 23.64 144.603 21.08C144.603 18.52 146.483 16.32 149.563 16.32C152.643 16.32 154.523 18.52 154.523 21.08C154.523 23.64 152.643 25.88 149.563 25.88Z" fill="currentColor" />
-    </svg>
+    <img 
+      src="/your-logo.png" 
+      alt="TCMF Generator Logo" 
+      className={className} 
+    />
   );
 };
 
