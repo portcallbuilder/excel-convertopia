@@ -31,7 +31,7 @@ const Index = () => {
     setConvertedFile(null);
   };
   
-  const handleFormatSelect = (format: Format) => {
+  const handleFormatSelect = (format: FormatInfo) => {
     setSelectedFormat(format);
   };
   

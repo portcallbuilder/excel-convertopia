@@ -31,10 +31,10 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
         >
-          Transform Excel Files
+          Transform Transport scenarios
           <br /> 
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-            With Just a Click
+            into TCMF
           </span>
         </motion.h1>
         
