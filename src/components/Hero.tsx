@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           className="mb-8"
         >
           <span className="inline-block py-1 px-3 rounded-full text-xs font-medium bg-secondary text-primary mb-4">
-            Excel Conversion Made Simple
+            TCMF Generator
           </span>
         </motion.div>
         
