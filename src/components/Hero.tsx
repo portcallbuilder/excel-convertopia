@@ -29,11 +29,11 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 font-serif"
         >
           Transform Transport scenarios
           <br /> 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
             into TCMF
           </span>
         </motion.h1>
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto font-sans"
         >
           Effortlessly convert your Excel spreadsheets to multiple formats with our intuitive, 
           powerful conversion tool. No complicated settings. No software to install.
@@ -54,10 +54,10 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
-          <Button size="lg" className="hover-lift rounded-full px-8 h-12">
+          <Button size="lg" className="hover-lift rounded-md px-8 h-12 bg-blue-600 hover:bg-blue-700">
             Get Started
           </Button>
-          <Button variant="outline" size="lg" className="hover-lift rounded-full px-8 h-12">
+          <Button variant="outline" size="lg" className="hover-lift rounded-md px-8 h-12 border-blue-600 text-blue-600 hover:bg-blue-50">
             Learn More
           </Button>
         </motion.div>
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
       >
         <a href="#converter" className="flex flex-col items-center">
-          <span className="text-sm text-muted-foreground mb-2">Start Converting</span>
+          <span className="text-sm text-muted-foreground mb-2 font-sans">Start Converting</span>
           <ArrowDownIcon className="h-6 w-6 animate-bounce" />
         </a>
       </motion.div>
