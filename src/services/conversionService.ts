@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { toast } from 'sonner';
 
@@ -16,25 +15,18 @@ export interface FormatInfo {
   id: string;
   name: string;
   extension: string;
-  icon: string; // Changed from JSX to string
+  icon: string; // Using string for icon
   description: string;
 }
 
 // Supported conversion formats
 export const supportedFormats: FormatInfo[] = [
   {
-    id: 'csv',
-    name: 'CSV',
-    extension: '.csv',
-    icon: 'CSV',
-    description: 'Comma-Separated Values, ideal for data interchange'
-  },
-  {
-    id: 'pdf',
-    name: 'PDF',
-    extension: '.pdf',
-    icon: 'PDF',
-    description: 'Portable Document Format, maintains formatting & layout'
+    id: 'markdown',
+    name: 'Markdown',
+    extension: '.md',
+    icon: 'MD',
+    description: 'Lightweight markup language for creating formatted text'
   },
   {
     id: 'json',
@@ -44,25 +36,11 @@ export const supportedFormats: FormatInfo[] = [
     description: 'JavaScript Object Notation, for API integration'
   },
   {
-    id: 'xml',
-    name: 'XML',
-    extension: '.xml',
-    icon: 'XML',
-    description: 'Extensible Markup Language, structured data format'
-  },
-  {
-    id: 'html',
-    name: 'HTML',
-    extension: '.html',
-    icon: 'HTML',
-    description: 'Web page format, viewable in any browser'
-  },
-  {
-    id: 'txt',
-    name: 'Text',
-    extension: '.txt',
-    icon: 'TXT',
-    description: 'Plain text format, universally compatible'
+    id: 'pdf',
+    name: 'PDF',
+    extension: '.pdf',
+    icon: 'PDF',
+    description: 'Portable Document Format, maintains formatting & layout'
   }
 ];
 

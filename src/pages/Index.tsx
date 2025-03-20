@@ -4,7 +4,7 @@ import { FileSpreadsheet, ArrowDown, FileCheck, CheckCircle } from 'lucide-react
 import NavBar from '@/components/NavBar';
 import Hero from '@/components/Hero';
 import FileUploader from '@/components/FileUploader';
-import FormatSelector, { Format } from '@/components/FormatSelector';
+import FormatSelector from '@/components/FormatSelector';
 import ConversionButton from '@/components/ConversionButton';
 import ProgressIndicator from '@/components/ProgressIndicator';
 import FilePreview from '@/components/FilePreview';
@@ -13,13 +13,14 @@ import { motion } from 'framer-motion';
 import { 
   convertExcelFile, 
   supportedFormats,
-  downloadConvertedFile
+  downloadConvertedFile,
+  FormatInfo
 } from '@/services/conversionService';
 import { toast } from 'sonner';
 
 const Index = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedFormat, setSelectedFormat] = useState<Format | null>(null);
+  const [selectedFormat, setSelectedFormat] = useState<FormatInfo | null>(null);
   const [isConverting, setIsConverting] = useState(false);
   const [conversionProgress, setConversionProgress] = useState(0);
   const [conversionStatus, setConversionStatus] = useState('Preparing file...');
