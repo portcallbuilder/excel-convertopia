@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
         >
           Transform Transport scenarios
           <br /> 
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-700">
+          <span className="font-serif">
             into TCMF
           </span>
         </motion.h1>
